@@ -31,3 +31,4 @@ Technologies to be used would include and are not limited to:
 JS, MongoDB, Node, Express, HTML, CSS, Handlerbars, React
 
 
+![layout](https://user-images.githubusercontent.com/46722789/60772813-3633af80-a0c1-11e9-9c6f-b41ec1e6bf11.jpg)
