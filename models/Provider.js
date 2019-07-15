@@ -6,28 +6,46 @@ var Schema = mongoose.Schema;
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
 var ProviderSchema = new Schema({
-  // `name` must be unique and of type String
-  name: {
-    type: String,
-    required: true
-  },
-// 
-  activeLicense: {
-      type: Boolean,
-    required: true
-  },
+    // `name` must be unique and of type String
+    name: {
+        type: String,
+        required: true
+    },
+    // 
+    //   activeLicense: {
+    //       type: Boolean,
+    //     required: true
+    //   },
+    activeDate: {
+        type: Date,
+        required: true
+    },
+    expireDate: {
+        type: Date,
+        required: true
 
-  supervisionReq: {
-    type: Boolean,
-    required: true
-},
-// if supervision is required, the provider should have an attached supervisor with an id in the database:
-supervisor:{
-type: Schema.Types.ObjectId,
-ref: "Supervisor"
-},
+    },
+    issueState: {
+      type: String,
+      required: true
+    },
+    license: {
+        type: Schema.Types.ObjectId,
+        ref: "License"
+    },
+    
+    //   supervisionReq: {
+    //     type: Boolean,
+    //     required: true
+    // },
 
- 
+    // if supervision is required, the provider should have an attached supervisor with an id in the database:
+    supervisor: {
+        type: Schema.Types.ObjectId,
+        ref: "Supervisor"
+    },
+
+
 
 });
 
