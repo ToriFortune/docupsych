@@ -12,23 +12,11 @@ var LicenseSchema = new Schema({
     required: true
   },
 // 
-  activeDate: {
-      type: Date,
-    required: true
-  },
-  expireDate: {
-      type: Date,
-      required: true
-    
-  },
-  current: {
-    type: Boolean,
-    required: true
-},
-  issueState: {
-    type: String,
-    required: true
-  },
+  
+//   current: {
+//     type: Boolean,
+//     required: true
+// },
 
   supervisionReq: {
       type: Boolean,

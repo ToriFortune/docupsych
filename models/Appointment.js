@@ -7,15 +7,24 @@ var Schema = mongoose.Schema;
 // This is similar to a Sequelize model
 var AppointmentSchema = new Schema({
     
-    apptTime: {
+    provider:{
+       type: Schema.Types.ObjectId,
+       ref: "Provider"
+    },
+    patient:{
+        type: Schema.Types.ObjectId,
+        ref: "Patient"
+     },
+     
+    dateTime: {
         type: Date,
         required: true
     },
-    // 
-    date: {
-        type: Date,
-        required: true
-    },
+    
+    // date: {
+    //     type: Date,
+    //     required: true
+    // },
     apptConfirmed: {
         type: Boolean,
         required: true
