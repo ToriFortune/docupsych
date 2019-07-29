@@ -9,25 +9,25 @@ var ProviderSchema = new Schema({
     // `name` must be unique and of type String
     name: {
         type: String,
-        required: true
+        required: false
     },
     // 
     //   activeLicense: {
     //       type: Boolean,
-    //     required: true
+    //     required: false
     //   },
     activeDate: {
         type: Date,
-        required: true
+        required: false
     },
     expireDate: {
         type: Date,
-        required: true
+        required: false
 
     },
     issueState: {
       type: String,
-      required: true
+      required: false
     },
     license: {
         type: Schema.Types.ObjectId,
@@ -36,7 +36,7 @@ var ProviderSchema = new Schema({
     
     //   supervisionReq: {
     //     type: Boolean,
-    //     required: true
+    //     required: false
     // },
 
     // if supervision is required, the provider should have an attached supervisor with an id in the database:
@@ -50,8 +50,8 @@ var ProviderSchema = new Schema({
 });
 
 // // This creates our model from the above schema, using mongoose's model method
-// var Provider = mongoose.model("Provider", ProviderSchema);
+var Provider = mongoose.model("Provider", ProviderSchema);
 
 // // Export the Provider model
 // 
-module.exports = ProviderSchema
+module.exports = Provider
