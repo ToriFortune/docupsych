@@ -9,15 +9,15 @@ var PatientSchema = new Schema({
   // `name` must be unique and of type String
   name: {
     type: String,
-    required: true
+    required: false
   },
   address: {
     type: String,
-    required: true
+    required: false
   },
   dob: {
       type: Date,
-    required: true
+    required: false
   },
   email: {
       type: String,
@@ -25,11 +25,11 @@ var PatientSchema = new Schema({
   },
   phone: {
     type: String,
-    required: true
+    required: false
   },
   sex: {
       type: Boolean,
-      required: true
+      required: false
   },
   provider: {
       type: Schema.Types.ObjectId,
