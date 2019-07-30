@@ -18,16 +18,16 @@ var AppointmentSchema = new Schema({
      
     dateTime: {
         type: Date,
-        required: true
+        required: false
     },
     
     // date: {
     //     type: Date,
-    //     required: true
+    //     required: false
     // },
     apptConfirmed: {
         type: Boolean,
-        required: true
+        required: false
     }
 
 
@@ -35,8 +35,8 @@ var AppointmentSchema = new Schema({
 });
 
 // // This creates our model from the above schema, using mongoose's model method
-// var Appointment = mongoose.model("Appointment", AppointmentSchema);
+var Appointment = mongoose.model("Appointment", AppointmentSchema);
 
 // // Export the Appointment model
 // 
-module.exports = AppointmentSchema
+module.exports = Appointment
