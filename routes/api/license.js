@@ -1,7 +1,8 @@
 
 // Requiring our models
-const db = require("../models");
-
+const db = require("../../models");
+const app = ("express");
+const express = require ("express");
 // Routes
 
 app.get("/api/license", function(req, res) {

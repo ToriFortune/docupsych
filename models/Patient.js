@@ -28,7 +28,7 @@ var PatientSchema = new Schema({
     required: false
   },
   sex: {
-      type: Boolean,
+      type: String,
       required: false
   },
   provider: {
