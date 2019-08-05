@@ -1,13 +1,13 @@
-var express = require("express");
-var mongoose = require("mongoose");
+const express = require("express");
+const mongoose = require("mongoose");
 
-var PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 
 // Require all models
-var db = require("./models");
+const db = require("./models");
 
 // Initialize Express
-var app = express();
+const app = express();
 
 // Configure middleware
 
@@ -15,9 +15,12 @@ var app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Make public a static folder
-app.use(express.static("public"));
+if (process.env.NODE_ENV==="production"){
+  app.use(express.static("public"));
+}
 
-require("./routes/login")(app);
+
+require("./routes/api/login")(app);
 // Connect to the Mongo DB
 mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/docupsych", { useNewUrlParser: true });
 

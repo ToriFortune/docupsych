@@ -18,7 +18,8 @@ var AppointmentSchema = new Schema({
      
     dateTime: {
         type: Date,
-        required: false
+        required: false,
+        default: Date.now
     },
     
     // date: {
