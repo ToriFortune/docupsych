@@ -41,7 +41,7 @@ passport.use(new LocalStrategy(
 ));
 
 // In order to help keep authentication state across HTTP requests,
-// Sequelize needs to serialize and deserialize the Provider
+// the db needs to serialize and deserialize the Provider
 // Just consider this part boilerplate needed to make it all work
 passport.serializeUser(function(provider, cb) {
   cb(null, provider);

@@ -1,9 +1,11 @@
 // Requiring our models
-const db = require("../models");
-
+const db = require("../../models");
+const app = ("express");
+// const router= require("express").Router
+// const express = require ("express");
 // Routes
 
-app.get("/api/appointment", function(req, res) {
+app.get("/api/appointment/:id", function(req, res) {
     var query = {};
     if (req.query.user_id) {
       query.userID = req.query.user_id;
