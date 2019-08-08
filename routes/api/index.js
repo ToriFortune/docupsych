@@ -1,23 +1,13 @@
-const router=require("express");
+const router = require("express").Router();
+const providerRoutes = require("./provider");
+
 const patientRoutes = require("./patient");
 const appointmentRoutes = require("./appointment");
-const licenseRoutes = require("./license");
-const providerRoutes = require("./provider");
-const administratorRoutes = require("./administrator")
 
-
-// patient routes
-router.use("/patients", patientRoutes);
-
-
-// provider routes
+// Provider routes
 router.use("/provider", providerRoutes);
+router.use("/patient", patientRoutes);
+router.use("/appointment", appointmentRoutes);
 
-// administrator routes
-router.use("/adminstrar", administratorRoutes);
 
-// license route
-router.use("/license", licenseRoutes );
-
-// // appointment routes
-router.use("/appointment",appointmentRoutes);
+module.exports = router;
