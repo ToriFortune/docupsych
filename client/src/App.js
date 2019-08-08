@@ -4,15 +4,16 @@ import Patients from "./pages/Patients";
 import Providers from "./pages/Providers";
 import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
-import Nav from "./component/NavBar";
+import NavBar from "./component/NavBar";
+import Landing from "./component/Landing";
 
 function App() {
   return (
     <Router>
       <div>
-        <Nav />
+        <NavBar />
         <Switch>
-          <Route exact path="/" component={Patients} />
+          <Route exact path="/" component={Landing} />
           <Route exact path="/patients" component={Patients} />
           <Route exact path="/providers" component={Providers} />
           <Route exact path="/login" component={Login} />
