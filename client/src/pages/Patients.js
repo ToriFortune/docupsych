@@ -1,174 +1,91 @@
-import React from "react";
+import React, { Component } from "react";
 import Table from 'react-bootstrap/Table'
+import API from "../utils/API";
+import moment from "moment"
 
-const Patients = () => (
+class Patients extends Component {
+  state = {
+    patients: [],
+  };
 
-  <div>
+  componentDidMount() {
+    this.loadPatients();
+  }
 
-    <Table responsive="xl">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Patient Name</th>   
-          <th>DOB and Gender</th>
-          <th>Address</th>
-          <th>Phone</th>
-          <th>Primary Provider</th>
-          <th>Primary Diagnosis</th>
+  loadPatients = () => {
+    API.getPatients()
+      .then(res =>
+        this.setState({ patients: res.data, title: "", author: "", synopsis: "" })
+      )
+      .catch(err => console.log(err));
+  };
 
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
+  deletePatient = id => {
+    API.deletePatient(id)
+      .then(res => this.loadPatients())
+      .catch(err => console.log(err));
+  };
 
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
 
-        </tr>
-        <tr>
-          <td>7</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
+  handleFormSubmit = event => {
+    event.preventDefault();
+    if (this.state.title && this.state.author) {
+      API.savePatient({
+        title: this.state.title,
+        author: this.state.author,
+        synopsis: this.state.synopsis
+      })
+        .then(res => this.loadPatients())
+        .catch(err => console.log(err));
+    }
+  };
 
-        </tr>
-        <tr>
-          <td>8</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
+  render() {
+    return (
+      <Table responsive="xl">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Patient Name</th>
+            <th>DOB</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Primary Provider</th>
+            <th>Primary Diagnosis</th>
 
-        </tr>
-        <tr>
-          <td>9</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-
-        </tr>
-        <tr>
-          <td>10</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-
-        </tr>
-        <tr>
-          <td>11</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-
-        </tr>
-        <tr>
-          <td>12</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-
-        </tr>
-        <tr>
-          <td>13</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-
-        </tr>
-        <tr>
-          <td>14</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-
-        </tr>
-        <tr>
-          <td>15</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-          <td>Pull from Schema</td>
-
-        </tr>
-      </tbody>
-    </Table>
-  </div>
-
-);
+          </tr>
+        </thead>
+        <tbody>
+        {this.state.patients.length ? 
+          this.state.patients.map((patient, i)=>{
+            return (
+              <tr>
+                <td>{i+1}</td>
+                <td>{patient.name}</td>
+                <td>{moment(patient.dob).format("MM-DD-YYYY")}</td>
+                <td>{patient.sex}</td>
+                <td>{patient.address}</td>
+                <td>{patient.phone}</td>
+                <td></td>
+                <td></td>
+              </tr>
+            )
+          })
+         : (
+          <tr>No Results to Display</tr>
+        )}
+          
+        </tbody>
+      </Table>
+)
+  }
+};
 
 export default Patients;
