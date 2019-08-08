@@ -7,9 +7,9 @@ function Landing() {
         <section class="landing">
             <div class="dark-overlay">
                 <div class="landing-inner">
-                    <h1 class="x-large">jkkkkkkkkkkkkkk</h1>
+                    <h1 class="x-large">Welcome</h1>
                     <p class="lead">
-                        fghjkl;'"/;lkjhgfdfghjkl;/'/.l,kmjnbvc'"'
+                      Please Log In
          </p>
                     <div class="buttons">
                       
