@@ -3,10 +3,10 @@ import { Form, Col } from "react-bootstrap";
 import { Input, FormBtn } from "../FormInput";
 import "./style.css"
 
-function NewPatientForm(props) {
+function NewProviderForm(props) {
   // Notice how each input has a `value`, `name`, and `onChange` prop
   return (
-    <Form className="newPatient">
+    <Form className="newProvider">
       <Form.Row>
         <Form.Group as={Col} controlId="formGridName">
           <Form.Label>First Name</Form.Label>
@@ -177,4 +177,4 @@ function NewPatientForm(props) {
   );
 }
 
-export default NewPatientForm;
+export default NewProviderForm;

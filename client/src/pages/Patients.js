@@ -52,8 +52,8 @@ class Patients extends Component {
         alert("all fields are required")
         return
       }
-      if (prop === "email" && form[prop].indexOf("@specialEmail.com") < 0 ){
-        alert("must have email ...")
+      if (prop === "email" && form[prop].indexOf("@phendnnetwork.org") < 0 ){
+        alert("must have Phend Network email")
         return
       }
     }
