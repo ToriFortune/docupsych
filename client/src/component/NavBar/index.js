@@ -10,7 +10,7 @@ function NavBar() {
             <Navbar.Brand href="/">
                 <img
                     alt=""
-                    src="/logo.svg"
+                    src="https://github.com/ToriFortune/Project-3/blob/master/client/src/Images/dcoupsych2.jpg"
                     width="30"
                     height="30"
                     className="d-inline-block align-top"
@@ -18,14 +18,14 @@ function NavBar() {
                 {"Docu Psych"}
             </Navbar.Brand>
             <Nav as="ul">
-            <Nav.Item as="li">
+                <Nav.Item as="li">
                     <Link to="/providers">Provider Page</Link>
 
                 </Nav.Item>
                 <Nav.Item as="li">
                     <Link to="/patients">Patient List</Link>
                 </Nav.Item>
-                
+
                 <Nav.Item as="li">
                     <Link to="/providers">Appointment Page</Link>
 
