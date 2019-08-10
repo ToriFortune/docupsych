@@ -7,9 +7,13 @@ const Schema = mongoose.Schema;
 // This is similar to a Sequelize model
 const PatientSchema = new Schema({
   // `name` must be unique and of type String
-  name: {
+  firstName: {
     type: String,
-    required: false
+    required: true
+  },
+  lastName: {
+    type: String,
+    required: true
   },
   // image:{
   //   data:Buffer,

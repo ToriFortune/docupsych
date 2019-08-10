@@ -2,9 +2,9 @@ const db = require("./models");
 const mongoose = require("mongoose");
 const moment = require('moment');
 
-mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/docupsych", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/docupsych", { useNewUrlParser: true });
 
-function AddProvider() {
+function addProvider() {
   db.Provider.create({ name: "Tori Olley" })
     .then(function (dbProvider) {
       // console.log(dbProvider);
@@ -21,6 +21,9 @@ function addPatients() {
     address: "123 Home Lane",
     email: "myemail@gmail.com",
     phone: "1234567890",
+    sex: "Female",
+    provider: "Dougie Houser",
+    diagnosis: "Dissociative Identity Disorder 300.14 (F44.81), Genito-Pelvic Pain/Penetration Disorder 302.76 (F52.6)",
     dob: moment("12-25-1995", "MM-DD-YYYY")
   })
     .then(function (dbPatient) {
@@ -35,13 +38,17 @@ function addPatients() {
     address: "123 Home Lane",
     email: "myemail@gmail.com",
     phone: "1234567890",
-    dob: moment("01-25-1995", "MM-DD-YYYY")
+    sex: "Female",
+    provider: "Dougie Houser",
+    diagnosis: "Dissociative Identity Disorder 300.14 (F44.81), Genito-Pelvic Pain/Penetration Disorder 302.76 (F52.6)",
+    dob: moment("12-25-1995", "MM-DD-YYYY")
+  
   })
     .then(function (dbPatient) {
-       console.log(dbPatient);
+      console.log(dbPatient);
     })
     .catch(function (err) {
-     console.log(err.message);
+      console.log(err.message);
     });
 
   db.Patient.create({
@@ -49,7 +56,11 @@ function addPatients() {
     address: "123 Home Lane",
     email: "myemail@gmail.com",
     phone: "1234567890",
-    dob: moment("03-25-1995", "MM-DD-YYYY")
+    sex: "Female",
+    provider: "Dougie Houser",
+    diagnosis: "Dissociative Identity Disorder 300.14 (F44.81), Genito-Pelvic Pain/Penetration Disorder 302.76 (F52.6)",
+    dob: moment("12-25-1995", "MM-DD-YYYY")
+    
   })
     .then(function (dbPatient) {
       console.log(dbPatient);
@@ -61,7 +72,7 @@ function addPatients() {
 }
 
 // Appointment
-function addProviders() {
+function addAppointment() {
   db.Appointment.create({ name: "" })
     .then(function (dbAppointment) {
       console.log(dbAppointment);
@@ -93,4 +104,9 @@ function addAdministrator() {
     })
 }
 
+
+addProvider();
 addPatients();
+addAppointment();
+addAdministrator();
+addLicense();

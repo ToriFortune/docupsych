@@ -7,6 +7,9 @@ import NoMatch from "./pages/NoMatch";
 import NavBar from "./component/NavBar";
 import Landing from "./component/Landing";
 import Appointment from "./pages/Appointment"
+import "./App.css";
+
+
 
 function App() {
   return (

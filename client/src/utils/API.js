@@ -1,21 +1,22 @@
 import axios from "axios";
 
 
+
 export default {
-  // Gets all books
+  // Gets all patient
   getPatients: function() {
     return axios.get("/api/patient");
   },
   // Gets the book with the given id
-  getBook: function(id) {
-    return axios.get("/api/patients/" + id);
+  getPatient: function(id) {
+    return axios.get("/api/patient/" + id);
   },
   // Deletes the book with the given id
-  deleteBook: function(id) {
-    return axios.delete("/api/patients/" + id);
+  deletePatient: function(id) {
+    return axios.delete("/api/patient/" + id);
   },
   // Saves a book to the database
-  saveBook: function(bookData) {
-    return axios.post("/api/patients", bookData);
+  savePatient: function(patientData) {
+    return axios.post("/api/patient", patientData);
   }
 };
