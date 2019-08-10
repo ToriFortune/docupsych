@@ -6,6 +6,10 @@ import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
 import NavBar from "./component/NavBar";
 import Landing from "./component/Landing";
+import Appointment from "./pages/Appointment"
+import "./App.css";
+
+
 
 function App() {
   return (
@@ -17,6 +21,7 @@ function App() {
           <Route exact path="/patients" component={Patients} />
           <Route exact path="/providers" component={Providers} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/appointments" component={Appointment} />
           <Route component={NoMatch} />
         </Switch>
       </div>

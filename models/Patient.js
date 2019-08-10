@@ -1,16 +1,25 @@
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
 // Save a reference to the Schema constructor
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
-var PatientSchema = new Schema({
+const PatientSchema = new Schema({
   // `name` must be unique and of type String
-  name: {
+  firstName: {
     type: String,
-    required: false
+    required: true
   },
+  lastName: {
+    type: String,
+    required: true
+  },
+  // image:{
+  //   data:Buffer,
+  //   contentType: String,
+  //   required:false
+  // },
   address: {
     type: String,
     required: false
@@ -47,7 +56,7 @@ var PatientSchema = new Schema({
 });
 
 // This creates our model from the above schema, using mongoose's model method
-var Patient = mongoose.model("Patient", PatientSchema);
+const Patient = mongoose.model("Patient", PatientSchema);
 
 // Export the Patient model
 module.exports = Patient;
