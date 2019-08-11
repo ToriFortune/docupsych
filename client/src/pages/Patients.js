@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import { Table, Card, Accordion } from 'react-bootstrap';
 import API from "../utils/API";
 import moment from "moment";
+import { toast } from 'react-toastify';
 import NewPatientForm from "../component/NewPatientForm";
 
 class Patients extends Component {
   state = {
     patients: [],
+    providers: [],
     form: {
       firstName: "",
-      lastName:"",
+      lastName: "",
     }
   };
 
@@ -17,11 +19,25 @@ class Patients extends Component {
     this.loadPatients();
   }
 
+  clearForm() {
+    let emptyForm = this.state.form;
+    for (let prop in emptyForm) {
+      emptyForm[prop] = "";
+    }
+    this.setState({ form: emptyForm })
+  }
+
   loadPatients = () => {
     API.getPatients()
-      .then(res =>
-        this.setState({ patients: res.data, name: "", address: "", dob: "", phone: "", sex: "", provider: "", diagnosis: "" })
-      )
+      .then(resPatient => {
+        API.getProviders()
+          .then(resProvider => {
+            this.setState({ 
+              patients: resPatient.data,
+              providers: resProvider.data
+            })
+          })
+      })
       .catch(err => console.log(err));
   };
 
@@ -34,9 +50,9 @@ class Patients extends Component {
   handleInputChange = event => {
     const { name, value } = event.target;
     let form = this.state.form;
-    form[name] =value;
+    form[name] = value;
     this.setState({
-     form
+      form
     });
   };
 
@@ -46,24 +62,26 @@ class Patients extends Component {
     ///check that all inputs have data
     const form = this.state.form;
     let validData = true;
-    for (let prop in form) { 
-      if (form[prop] === ""){
+    for (let prop in form) {
+      if (form[prop] === "") {
         validData = false
-        alert("all fields are required")
+        toast.error("all fields are required");
         return
       }
-      if (prop === "email" && form[prop].indexOf("@specialEmail.com") < 0 ){
-        alert("must have email ...")
-        return
-      }
+      
     }
 
     if (validData) {
       API.savePatient(this.state.form)
-        .then(res => this.loadPatients())
+        .then(res => {
+          this.loadPatients();
+          this.clearForm();
+          toast.success("patient successfully added to list")
+        })
         .catch(err => console.log(err));
     }
   };
+
 
   render() {
     return (
@@ -77,6 +95,8 @@ class Patients extends Component {
               <NewPatientForm
                 inputChange={this.handleInputChange}
                 submit={this.handleFormSubmit}
+                form={this.state.form}
+                providers={this.state.providers}
               />
             </Card.Body>
           </Accordion.Collapse>
