@@ -16,16 +16,20 @@ var AppointmentSchema = new Schema({
         ref: "Patient"
      },
      
-    dateTime: {
-        type: Date,
-        required: false,
-        default: Date.now
-    },
-    
-    // date: {
+    // dateTime: {
     //     type: Date,
-    //     required: false
+    //     required: false,
+    //     default: Date.now
     // },
+    
+    date: {
+        type: Date,
+        required: false
+    },
+    time:{
+        type: Date,
+        required: false
+    },
     apptConfirmed: {
         type: Boolean,
         required: false

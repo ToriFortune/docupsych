@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom"
-
+import { Link } from "react-router-dom";
+import "./landing.css"
 function Landing() {
     return (
        
-        <section class="landing">
+        <row className="landing">
             <div class="dark-overlay">
                 <div class="landing-inner">
                     <h1 class="x-large">Welcome</h1>
@@ -18,7 +18,7 @@ function Landing() {
                     </div>
                 </div>
             </div>
-        </section>
+        </row>
 );
 }
 

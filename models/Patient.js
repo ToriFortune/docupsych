@@ -18,15 +18,31 @@ const PatientSchema = new Schema({
   // image:{
   //   data:Buffer,
   //   contentType: String,
-  //   required:false
+  //   required:true
   // },
-  address: {
+  address1: {
     type: String,
-    required: false
+    required: true
+  },
+  address2: {
+    type: String,
+    required: true
+  },
+  city: {
+    type: String,
+    required: true
+  },
+  state: {
+    type: String,
+    required: true
+  },
+  zip: {
+    type: String,
+    required: true
   },
   dob: {
       type: Date,
-    required: false
+    required: true
   },
   email: {
       type: String,
@@ -34,14 +50,14 @@ const PatientSchema = new Schema({
   },
   phone: {
     type: String,
-    required: false
+    required: true
   },
   sex: {
       type: String,
-      required: false
+      required: true
   },
   provider: {
-      type: Schema.Types.ObjectId,
+      type: String,
       ref: "Provider"
   },
     diagnosis: {

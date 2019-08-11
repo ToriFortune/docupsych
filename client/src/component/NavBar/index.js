@@ -15,7 +15,7 @@ function NavBar() {
                     height="30"
                     className="d-inline-block align-top"
                 />
-                {"Docu Psych"}
+                {"DocuPsych EMR"}
             </Navbar.Brand>
             <Nav as="ul">
                 <Nav.Item as="li">
@@ -27,7 +27,7 @@ function NavBar() {
                 </Nav.Item>
 
                 <Nav.Item as="li">
-                    <Link to="/providers">Appointment Page</Link>
+                    <Link to="/appointment">Appointment Page</Link>
 
                 </Nav.Item>
             </Nav>

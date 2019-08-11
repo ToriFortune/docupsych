@@ -10,6 +10,14 @@ export function Input(props) {
   );
 }
 
+export function Select(props) {
+  return (
+    <select {...props} className="form-control">
+      {props.children}
+    </select>
+  );
+}
+
 export function TextArea(props) {
   return (
     <div className="form-group">
