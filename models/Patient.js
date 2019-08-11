@@ -20,7 +20,23 @@ const PatientSchema = new Schema({
   //   contentType: String,
   //   required:true
   // },
-  address: {
+  address1: {
+    type: String,
+    required: true
+  },
+  address2: {
+    type: String,
+    required: true
+  },
+  city: {
+    type: String,
+    required: true
+  },
+  state: {
+    type: String,
+    required: true
+  },
+  zip: {
     type: String,
     required: true
   },
@@ -41,7 +57,7 @@ const PatientSchema = new Schema({
       required: true
   },
   provider: {
-      type: Schema.Types.ObjectId,
+      type: String,
       ref: "Provider"
   },
     diagnosis: {

@@ -7,16 +7,20 @@ var Schema = mongoose.Schema;
 // This is similar to a Sequelize model
 var ProviderSchema = new Schema({
     // `name` must be unique and of type String
-    name: {
+    firstName: {
         type: String,
-        required: false
-    },
+        required: true
+      },
+      lastName: {
+        type: String,
+        required: true
+      },
     // 
     //   activeLicense: {
     //       type: Boolean,
     //     required: false
     //   },
-    activeDate: {
+    issueDate: {
         type: Date,
         required: false
     },
@@ -29,8 +33,16 @@ var ProviderSchema = new Schema({
       type: String,
       required: false
     },
+    phone:{
+      type: String,
+      required: true
+    },
+    email:{
+      type: String,
+      required: true
+    },
     license: {
-        type: Schema.Types.ObjectId,
+        type: String,
         ref: "License"
     },
     
@@ -41,7 +53,7 @@ var ProviderSchema = new Schema({
 
     // if supervision is required, the provider should have an attached supervisor with an id in the database:
     supervisor: {
-        type: Schema.Types.ObjectId,
+        type: String,
         ref: "Supervisor"
     },
 

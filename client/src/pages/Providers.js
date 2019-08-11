@@ -1,65 +1,51 @@
-// import React from "react";
-// import { Form,Button  } from "react-bootstrap"
-
-// const Providers = () => (
-//   <div className="wrapper">
-//   <Form>
-//   <Form.Group controlId="formBasicPassword">
-//   <label for="comment">Note Entry</label>
-//   <textarea className="form-control" rows = "5" id ="comment"></textarea>
-//         {/* <Form.Control type="password" placeholder="Password" /> */}
-//       </Form.Group>
-      
-//       <Button variant="primary" type="submit">
-//         Submit Note
-//       </Button>
-  
-//     </Form>
-// </div>
-// );
-
-// export default Providers;
-
-
 import React, { Component } from "react";
 import { Table, Card, Accordion } from 'react-bootstrap';
 import API from "../utils/API";
 import moment from "moment";
 import NewProviderForm from "../component/NewProviderForm";
+import { toast } from 'react-toastify';
 
 class Provider extends Component {
   state = {
     provider: [],
     form: {
       firstName: "",
-      lastName:"",
+      lastName: "",
     }
   };
 
   componentDidMount() {
-    this.loadPatients();
+    this.loadProvider();
   }
 
-  loadPatients = () => {
-    API.getPatients()
+  clearForm() {
+    let emptyForm = this.state.form;
+    for (let prop in emptyForm) {
+      emptyForm[prop] = "";
+    }
+    this.setState({ form: emptyForm })
+  }
+
+  loadProvider = () => {
+    API.getProviders()
       .then(res =>
-        this.setState({ provider: res.data, name: "", address: "", dob: "", phone: "", sex: "", provider: "", diagnosis: "" })
+        this.setState({ provider: res.data, name: "", activeDate: "", expireDate: "", issueDate: "", license: "", supervisor: "" })
       )
       .catch(err => console.log(err));
   };
 
-  deletePatient = id => {
-    API.deletePatient(id)
-      .then(res => this.loadPatients())
+  deleteProvider = id => {
+    API.deleteProvider(id)
+      .then(res => this.loadProvider())
       .catch(err => console.log(err));
   };
 
   handleInputChange = event => {
     const { name, value } = event.target;
     let form = this.state.form;
-    form[name] =value;
+    form[name] = value;
     this.setState({
-     form
+      form
     });
   };
 
@@ -69,22 +55,27 @@ class Provider extends Component {
     ///check that all inputs have data
     const form = this.state.form;
     let validData = true;
-    for (let prop in form) { 
-      if (form[prop] === ""){
+    for (let prop in form) {
+      if (form[prop] === "") {
         validData = false
-        alert("all fields are required")
+        toast.error("all fields are required")
         return
       }
-      if (prop === "email" && form[prop].indexOf("@phendnnetwork.org") < 0 ){
-        alert("must have Phend Network email")
+      if (prop === "email" && form[prop].indexOf("@phendnetwork.org") < 0) {
+        toast.error("must have Phend Network email")
         return
       }
     }
 
     if (validData) {
-      API.savePatient(this.state.form)
-        .then(res => this.loadPatients())
+      API.saveProvider(this.state.form)
+        .then(res => {
+          this.loadProvider();
+          this.clearForm();
+          toast.success("patient successfully added to list")
+        })
         .catch(err => console.log(err));
+
     }
   };
 
@@ -100,6 +91,7 @@ class Provider extends Component {
               <NewProviderForm
                 inputChange={this.handleInputChange}
                 submit={this.handleFormSubmit}
+                form={this.state.form}
               />
             </Card.Body>
           </Accordion.Collapse>
@@ -120,7 +112,7 @@ class Provider extends Component {
                     <th>Active </th>
                     <th>Expires</th>
                     <th>Supervisor</th>
-                   
+
 
                   </tr>
                 </thead>
@@ -131,12 +123,12 @@ class Provider extends Component {
                         <tr>
                           <td>{i + 1}</td>
                           <td>{`${provider.lastName}, ${provider.firstName}`}</td>
-                          <td>{moment(provider.dob).format("MM-DD-YYYY")}</td>
-                          <td>{provider.sex}</td>
-                          <td>{provider.address}</td>
-                          <td>{provider.phone}</td>
-                          <td>{provider.provider}</td>
-                          <td>{provider.diagnosis}</td>
+                          <td>{moment(provider.activeDate).format("MM-DD-YYYY")}</td>
+                          <td>{moment(provider.expireDate).format("MM-DD-YYYY")}</td>
+                          <td>{provider.issueState}</td>
+                          <td>{provider.license}</td>
+                          <td>{provider.supervisor}</td>
+
                           <td></td>
                           <td></td>
                         </tr>
