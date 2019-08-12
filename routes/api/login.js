@@ -1,25 +1,65 @@
-// const db =require ("../models");
-const passport= require("../../config/passport");
+const db =require ("../../models");
+const passport = require('../../passport')
+const router = require("express").Router();
 
-module.exports=function(app){
-    app.post("/api/login", 
-    passport.authenticate("local", {failureMessage: "Incorrect username or password"}), 
-    function(req, res) {
-   
-        console.log("hi")
-        console.log(req.user);
-        res.json(req.user.id);
-      });
-}
+router.post('/signup', (req, res) => {
+    console.log('provider signup');
 
+    const  { email } = req.body;
+    console.log(req);
+    // ADD VALIDATION
+    db.Provider.findOne({ email: email }, (err, provider) => {
+        if (err) {
+            console.log('provider.js post error: ', err)
+        } else if (provider) {
+            res.json({
+                error: `Sorry, already a user with the email: ${email}`
+            })
+        }
+        else {
+            const newProvider = new db.Provider(req.body)
+            newProvider.save((err, savedProvider) => {
+                if (err) return res.json(err)
+                res.json(savedProvider)
+            })
+        }
+    })
+})
 
-// app.post('/login/signup', function(req,res){
-//     console.log(req.body);
+router.post(
+    '/login',
+    function (req, res, next) {
+        console.log('routes/provider.js, login, req.body: ');
+        console.log(req.body)
+        next()
+    },
+    passport.authenticate('local'),
+    (req, res) => {
+        console.log('logged in', req.user);
+        var userInfo = {
+            email: req.user.email
+        };
+        res.send(userInfo);
+    }
+)
 
-// }
-//   passport.authenticate('local'),
-//   function(req, res) {
-//     // If this function gets called, authentication was successful.
-//     // `req.user` contains the authenticated user.
-//     res.redirect('/users/' + req.user.username);
-//   });
+router.get('/verify', (req, res, next) => {
+    console.log('===== provider!!======')
+    console.log(req.user)
+    if (req.user) {
+        res.json({ provider: req.user })
+    } else {
+        res.json({ provider: null })
+    }
+})
+
+router.post('/logout', (req, res) => {
+    if (req.user) {
+        req.logout()
+        res.send({ msg: 'logging out' })
+    } else {
+        res.send({ msg: 'no provider to log out' })
+    }
+})
+
+module.exports = router

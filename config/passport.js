@@ -3,19 +3,19 @@ var LocalStrategy = require("passport-local").Strategy;
 
 var db = require("../models");
 
-// Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
+// Telling passport we want to use a Local Strategy. In other words, we want login with a email and password
 passport.use(new LocalStrategy(
   // Our provider will sign in using an email, rather than a "providername"
   {
-    provider: "name"
+    usernameField: 'email'
   },
-  function(provider, password, done) {
+  function(email, password, done) {
     // When a user tries to sign in this code runs
-    console.log(provider)
+    console.log(`User email : ${email}`)
     console.log("Working")
     db.Provider.findOne({
       where: {
-        name: name
+        email: email
       }
     }).then(function(dbProvider) {
       // If there's no Provider with the given email
