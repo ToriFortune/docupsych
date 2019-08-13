@@ -130,7 +130,7 @@ class Patients extends Component {
                           <td>{`${patient.lastName}, ${patient.firstName}`}</td>
                           <td>{moment(patient.dob).format("MM-DD-YYYY")}</td>
                           <td>{patient.sex}</td>
-                          <td>{patient.address}</td>
+                          <td>{`${patient.address1}, ${patient.address2}, ${patient.city}, ${patient.state},${patient.zip}`}</td>
                           <td>{patient.phone}</td>
                           <td>{patient.provider}</td>
                           <td>{patient.diagnosis}</td>
