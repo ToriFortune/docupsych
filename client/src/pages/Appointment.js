@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { Card, Accordion } from 'react-bootstrap';
 import API from "../utils/API";
-import moment from "moment";
+// import moment from "moment";
 import NewApptForm from "../component/NewApptForm";
 import { Redirect } from "react-router-dom";
 
@@ -77,14 +77,20 @@ class Appointment extends Component {
       console.log(form);
       API.saveAppointment(form)
         .then(res => this.loadAppointment(form.patient))
+        
         .catch(err => console.log(err));
     }
   };
+loadPatientNote=()=>{
+  this.setState({
+    loadPatientNote: true
+  })
+}
 
   render() {
-    if (sessionStorage.getItem("isLoggedIn") !== "true") {
-      return <Redirect to="/" />;
-    }
+    // if (sessionStorage.getItem("isLoggedIn") !== "true") {
+    //   return <Redirect to="/" />;
+    // }
     return (
       <Accordion defaultActiveKey="0">
         <Card>
@@ -100,20 +106,13 @@ class Appointment extends Component {
                 form={this.state.form}
                 inputChange={this.handleInputChange}
                 submit={this.handleFormSubmit}
+
+                
               />
             </Card.Body>
           </Accordion.Collapse>
         </Card>
-        {/* <Card>
-  
-      <Accordion.Toggle as={Card.Header} eventKey="1">
-    CLICK
-      </Accordion.Toggle>
-    
-    <Accordion.Collapse eventKey="1">
-      <Card.Body>CLICK</Card.Body>
-    </Accordion.Collapse>
-  </Card> */}
+     
       </Accordion>
     )
   }

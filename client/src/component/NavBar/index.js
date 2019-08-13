@@ -1,7 +1,9 @@
 import React from "react";
-import { Nav, Navbar, Button } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import "../NavBar/navbar.css"
 import { Link } from "react-router-dom"
+ 
+import "../Landing/Landing"
 
 function NavBar() {
     return (
@@ -26,10 +28,11 @@ function NavBar() {
                     <Link to="/patients">Patient List</Link>
                 </Nav.Item>
 
-                {/* <Nav.Item as="li">
-                    <Link to="/appointment">Appointment Page</Link>
-                </Nav.Item> */}
-                <Button variant="link">Log Out</Button>
+                <Nav.Item as="li"> 
+                <Link to="/landing">Log Out</Link>
+                    
+                </Nav.Item>
+               
             </Nav>
         </Navbar>
     );

@@ -79,9 +79,9 @@ class Provider extends Component {
   };
 
   render() {
-    if (sessionStorage.getItem("isLoggedIn") !== "true"){
-      return <Redirect to="/"/>;
-    }
+    // if (sessionStorage.getItem("isLoggedIn") !== "true"){
+    //   return <Redirect to="/"/>;
+    // }
     return (
       <Accordion defaultActiveKey="0">
         <Card>
