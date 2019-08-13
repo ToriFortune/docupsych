@@ -93,9 +93,9 @@ class Patients extends Component {
   }
 
   render() {
-    if (sessionStorage.getItem("isLoggedIn") !== "true") {
-      return <Redirect to="/" />;
-    }
+    // if (sessionStorage.getItem("isLoggedIn") !== "true") {
+    //   return <Redirect to="/" />;
+    // }
     if (this.state.goToPatient){
       return <Redirect to={`/patients/${this.state.patientID}`}/>
     }

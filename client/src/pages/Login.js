@@ -51,11 +51,11 @@ class Login extends Component {
       API.login(this.state.form)
         .then(res => {
           console.log(res.data);
-          sessionStorage.setItem("isLoggedIn", true);
+          sessionStorage.setItem("isLoggedIn", false);
           sessionStorage.setItem("userID", res.data.id);
           toast.success(`Welcome ${res.data.firstName}!`);
           // set
-          this.setState({goToPatients: true})
+          this.setState({goToPatients: false})
         })
         .catch(err => console.log(err));
     }
