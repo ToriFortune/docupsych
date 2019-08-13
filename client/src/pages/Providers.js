@@ -4,14 +4,12 @@ import API from "../utils/API";
 import moment from "moment";
 import NewProviderForm from "../component/NewProviderForm";
 import { toast } from 'react-toastify';
+import Forms from "../utils/forms"
 
 class Provider extends Component {
   state = {
     provider: [],
-    form: {
-      firstName: "",
-      lastName: "",
-    }
+    form: Forms.newProvider
   };
 
   componentDidMount() {
@@ -107,10 +105,10 @@ class Provider extends Component {
                   <tr>
                     <th>#</th>
                     <th>provider Name</th>
-                    <th>License Type</th>
-                    <th>Issuing State</th>
                     <th>Active </th>
                     <th>Expires</th>
+                    <th>Issuing State</th>
+                    <th>License Type</th>
                     <th>Supervisor</th>
 
 

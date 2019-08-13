@@ -9,6 +9,7 @@ import NoMatch from "./pages/NoMatch";
 import NavBar from "./component/NavBar";
 import Landing from "./component/Landing/Landing";
 import Appointment from "./pages/Appointment"
+import Signup from "./pages/Signup"
 import "./App.css";
 
 
@@ -36,6 +37,7 @@ function App() {
           <Route exact path="/providers" component={Providers} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/Appointment" component={Appointment} />
+          <Route exact path ="/signup" component= {Signup}/>
           <Route component={NoMatch} />
         </Switch>
       </div>

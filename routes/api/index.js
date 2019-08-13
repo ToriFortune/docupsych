@@ -7,7 +7,7 @@ const loginRoutes = require ("./login");
 router.use("/provider", providerRoutes);
 router.use("/patient", patientRoutes);
 router.use("/appointment", appointmentRoutes);
-router.use("/login", loginRoutes);
+router.use("/", loginRoutes);
 
 if(process.env.NODE_ENV === "production") {
   // If no API routes are hit, send the React app

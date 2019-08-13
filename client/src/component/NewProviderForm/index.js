@@ -102,8 +102,8 @@ function NewProviderForm(props) {
         <Form.Group as={Col} controlId="formGridissueSate">
           <Form.Label>Issuing State</Form.Label>
           <Select
-            name="state"
-            value={props.form.state}
+            name="issueState"
+            value={props.form.issueState}
             onChange={props.inputChange}>
             <option>Choose...</option>
             {stateList.map((state => {
