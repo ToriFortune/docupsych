@@ -49,7 +49,8 @@ export default {
   },
   // Gets the appointment with the given id
   getAppointment: function(id) {
-    return axios.get("/api/appointment" + id);
+    // console.log("route: /api/appointment/" + id)
+    return axios.get("/api/appointment/" + id);
   },
   // Deletes the appointment with the given id
   deleteAppointment: function(id) {
@@ -57,6 +58,7 @@ export default {
   },
   // Saves an appointment to the database
   saveAppointment: function(appointmentData) {
+    console.log("route: /api/appointment/")
     return axios.post("/api/appointment", appointmentData);
   },
 

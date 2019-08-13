@@ -4,7 +4,7 @@ import API from "../utils/API";
 import moment from "moment";
 import { toast } from 'react-toastify';
 import NewPatientForm from "../component/NewPatientForm";
-import {Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class Patients extends Component {
   state = {
@@ -14,6 +14,8 @@ class Patients extends Component {
       firstName: "",
       lastName: "",
     },
+    goToPatient: false,
+    patientID: "",
   };
 
   componentDidMount() {
@@ -33,7 +35,7 @@ class Patients extends Component {
       .then(resPatient => {
         API.getProviders()
           .then(resProvider => {
-            this.setState({ 
+            this.setState({
               patients: resPatient.data,
               providers: resProvider.data
             })
@@ -69,7 +71,7 @@ class Patients extends Component {
         toast.error("all fields are required");
         return
       }
-      
+
     }
 
     if (validData) {
@@ -83,10 +85,19 @@ class Patients extends Component {
     }
   };
 
+  goToPatientPage = (id) => {
+    this.setState({
+      goToPatient:true,
+      patientID: id,
+    })
+  }
 
   render() {
-    if (sessionStorage.getItem("isLoggedIn") !== "true"){
-      return <Redirect to="/"/>;
+    if (sessionStorage.getItem("isLoggedIn") !== "true") {
+      return <Redirect to="/" />;
+    }
+    if (this.state.goToPatient){
+      return <Redirect to={`/patients/${this.state.patientID}`}/>
     }
     return (
       <Accordion defaultActiveKey="0">
@@ -129,18 +140,18 @@ class Patients extends Component {
                   {this.state.patients.length ?
                     this.state.patients.map((patient, i) => {
                       return (
-                        <tr>
-                          <td>{i + 1}</td>
-                          <td>{`${patient.lastName}, ${patient.firstName}`}</td>
-                          <td>{moment(patient.dob).format("MM-DD-YYYY")}</td>
-                          <td>{patient.sex}</td>
-                          <td>{`${patient.address1}, ${patient.address2}, ${patient.city}, ${patient.state},${patient.zip}`}</td>
-                          <td>{patient.phone}</td>
-                          <td>{patient.provider}</td>
-                          <td>{patient.diagnosis}</td>
-                          <td></td>
-                          <td></td>
-                        </tr>
+                          <tr onClick={() => {this.goToPatientPage(patient._id)}}>
+                            <td>{i + 1}</td>
+                            <td>{`${patient.lastName}, ${patient.firstName}`}</td>
+                            <td>{moment(patient.dob).format("MM-DD-YYYY")}</td>
+                            <td>{patient.sex}</td>
+                            <td>{`${patient.address1}, ${patient.address2}, ${patient.city}, ${patient.state},${patient.zip}`}</td>
+                            <td>{patient.phone}</td>
+                            <td>{patient.provider}</td>
+                            <td>{patient.diagnosis}</td>
+                            <td></td>
+                            <td></td>
+                          </tr>
                       )
                     })
                     : (

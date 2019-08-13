@@ -2,29 +2,39 @@
 import React, { Component } from "react";
 import { Card, Accordion } from 'react-bootstrap';
 import API from "../utils/API";
+import moment from "moment";
 import NewApptForm from "../component/NewApptForm";
-import {Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 
 
-  
+
 class Appointment extends Component {
   state = {
     appointment: [],
     form: {
       apptDate: "",
-      apptTime: "",
-    }
+    },
+    patientID: "",
+    patientName: "",
   };
 
   componentDidMount() {
-    this.loadAppointment();
+    this.setState({ patientID: this.props.match.params.id });
+    this.loadAppointment(this.props.match.params.id);
   }
 
-  loadAppointment = () => {
-    API.getAppointment()
+  loadAppointment = (id) => {
+    API.getAppointment(id)
       .then(res =>
-        this.setState({ appointment: res.data, provider: "", patient: "", apptDate: "", apptTime: "", apptConfirmed: "" })
+        this.setState({
+          appointment: res.data.appointments,
+          provider: "",
+          patient: res.data.patientName,
+          apptDate: "",
+          apptTime: "",
+          apptConfirmed: ""
+        })
       )
       .catch(err => console.log(err));
   };
@@ -56,41 +66,45 @@ class Appointment extends Component {
         alert("all fields are required")
         return
       }
-      if (prop === "email" && form[prop].indexOf("@phendnnetwork.org") < 0) {
-        alert("must have Phend Network email")
-        return
-      }
+      // if (prop === "apptDate"){
+      //   const d8 = moment(form[prop]).format("MM/DD/YYYY");
+      //   form[prop] = d8
+      // }
     }
 
     if (validData) {
-      API.saveAppointment(this.state.form)
-        .then(res => this.loadAppointment())
+      form.patient = this.state.patientID;
+      console.log(form);
+      API.saveAppointment(form)
+        .then(res => this.loadAppointment(form.patient))
         .catch(err => console.log(err));
     }
   };
 
   render() {
-    if (sessionStorage.getItem("isLoggedIn") != "true"){
-      return <Redirect to="/"/>;
+    if (sessionStorage.getItem("isLoggedIn") !== "true") {
+      return <Redirect to="/" />;
     }
     return (
       <Accordion defaultActiveKey="0">
-      <Card>
-  
-      <Accordion.Toggle as={Card.Header} eventKey="0">
-      Session Documentation
+        <Card>
+
+          <Accordion.Toggle as={Card.Header} eventKey="0">
+            Session Documentation
       </Accordion.Toggle>
-    
-    <Accordion.Collapse eventKey="0">
-    <Card.Body>
-      <NewApptForm  
-      inputChange={this.handleInputChange}
-                submit={this.handleFormSubmit} 
-                /> 
-     </Card.Body>
-    </Accordion.Collapse>
-  </Card>
-  {/* <Card>
+
+          <Accordion.Collapse eventKey="0">
+            <Card.Body>
+              <NewApptForm
+                patient={this.state.patient}
+                form={this.state.form}
+                inputChange={this.handleInputChange}
+                submit={this.handleFormSubmit}
+              />
+            </Card.Body>
+          </Accordion.Collapse>
+        </Card>
+        {/* <Card>
   
       <Accordion.Toggle as={Card.Header} eventKey="1">
     CLICK
@@ -100,7 +114,7 @@ class Appointment extends Component {
       <Card.Body>CLICK</Card.Body>
     </Accordion.Collapse>
   </Card> */}
-</Accordion>
+      </Accordion>
     )
   }
 };
