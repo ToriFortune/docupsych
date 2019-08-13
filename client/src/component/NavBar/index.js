@@ -26,9 +26,9 @@ function NavBar() {
                     <Link to="/patients">Patient List</Link>
                 </Nav.Item>
 
-                <Nav.Item as="li">
+                {/* <Nav.Item as="li">
                     <Link to="/appointment">Appointment Page</Link>
-                </Nav.Item>
+                </Nav.Item> */}
                 <Button variant="link">Log Out</Button>
             </Nav>
         </Navbar>

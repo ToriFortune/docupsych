@@ -17,12 +17,12 @@ var AppointmentSchema = new Schema({
      },
      
     // dateTime: {
-    //     type: Date,
+    //     type: Date,nnnnnnnn nm
     //     required: false,
     //     default: Date.now
     // },
     
-    date: {
+    apptDate: {
         type: Date,
         required: false
     },

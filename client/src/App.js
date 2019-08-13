@@ -36,7 +36,7 @@ function App() {
           <Route exact path="/patients" component={Patients} />
           <Route exact path="/providers" component={Providers} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/Appointment" component={Appointment} />
+          <Route exact path="/patients/:id" component={Appointment} />
           <Route exact path ="/signup" component= {Signup}/>
           <Route component={NoMatch} />
         </Switch>
