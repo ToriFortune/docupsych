@@ -13,7 +13,7 @@ function Landing() {
          </p>
                     <div class="buttons">
                       
-                    <Link to="/register" className="btn btn-primary">Sign Up</Link>
+                    <Link to="/signup" className="btn btn-primary">Sign Up</Link>
                         <Link to="/login" className="btn btn-light">Login</Link>
                     </div>
                 </div>

@@ -20,7 +20,10 @@
     "nodemon": "^1.18.7"
   },
   "dependencies": {
+    "@fullcalendar/core": "^4.3.1",
+    "@fullcalendar/daygrid": "^4.3.0",
     "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
     "bootstrap": "^4.3.1",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
@@ -32,6 +35,7 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "react-bootstrap": "^1.0.0-beta.10",
+    "react-calendar": "^2.19.0",
     "react-router-dom": "^5.0.1",
     "react-toastify": "^5.3.2"
   }
