@@ -151,13 +151,20 @@ class Signup extends Component {
                                     Enter Phend Network email address.
                                  </Form.Text>
                                  </Form.Group>
-                                <Form.Group as={Col}controlId="formBasicPassword">
-                                    <Form.Label>Password</Form.Label>
-                                    <Form.Control type="password" placeholder="Password" />
-                                    <Form.Text className="text-muted">
-                                        Password must be longer than six characters
-                                 </Form.Text>
-                                </Form.Group>
+                                 <Form.Group as={Col} controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+
+                <Input
+                  name="password"
+                  value={this.state.form.password}
+                  type="password"
+                  placeholder="password"
+                  onChange={this.handleInputChange} />
+                                <Form.Text className="text-muted">
+                  Password must be longer than six characters
+                           </Form.Text>
+              </Form.Group>
+
 
                             
                         </Form.Row>

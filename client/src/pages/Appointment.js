@@ -1,30 +1,9 @@
-// import React from "react";
-// import { Form,Button  } from "react-bootstrap"
+
 import React, { Component } from "react";
 import { Card, Accordion } from 'react-bootstrap';
 import API from "../utils/API";
-// import moment from "moment";
 import NewApptForm from "../component/NewApptForm";
-// const moment = require('moment');
-// moment().format();
-// const Appointments = () => (
-//     <div className="wrapper">
-//     <Form>
-//     <Form.Group controlId="formBasicPassword">
-//     <label for="comment">Note Entry</label>
-//     <textarea className="form-control" rows = "5" id ="comment"></textarea>
-//           {/* <Form.Control type="password" placeholder="Password" /> */}
-//         </Form.Group>
-        
-//         <Button variant="primary" type="submit">
-//           Submit Note
-//         </Button>
-    
-//       </Form>
-//   </div>
-//   );
-  
-//   export default Appointments;
+import {Redirect} from "react-router-dom";
 
 
 
@@ -91,6 +70,9 @@ class Appointment extends Component {
   };
 
   render() {
+    if (sessionStorage.getItem("isLoggedIn") != "true"){
+      return <Redirect to="/"/>;
+    }
     return (
       <Accordion defaultActiveKey="0">
       <Card>

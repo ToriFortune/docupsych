@@ -3,6 +3,10 @@ import axios from "axios";
 
 
 export default {
+  login: function(credentials){
+    console.log(`logging in with email(${credentials.email}) & password(${credentials.password})`)
+    return axios.post("/api/login", credentials)
+  },
   // Gets all patient
   getPatients: function() {
     return axios.get("/api/patient");

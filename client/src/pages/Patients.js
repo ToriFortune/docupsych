@@ -4,6 +4,7 @@ import API from "../utils/API";
 import moment from "moment";
 import { toast } from 'react-toastify';
 import NewPatientForm from "../component/NewPatientForm";
+import {Redirect} from "react-router-dom";
 
 class Patients extends Component {
   state = {
@@ -12,7 +13,7 @@ class Patients extends Component {
     form: {
       firstName: "",
       lastName: "",
-    }
+    },
   };
 
   componentDidMount() {
@@ -84,6 +85,9 @@ class Patients extends Component {
 
 
   render() {
+    if (sessionStorage.getItem("isLoggedIn") !== "true"){
+      return <Redirect to="/"/>;
+    }
     return (
       <Accordion defaultActiveKey="0">
         <Card>
