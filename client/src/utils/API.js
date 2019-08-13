@@ -3,6 +3,10 @@ import axios from "axios";
 
 
 export default {
+  login: function(credentials){
+    console.log(`logging in with email(${credentials.email}) & password(${credentials.password})`)
+    return axios.post("/api/login", credentials)
+  },
   // Gets all patient
   getPatients: function() {
     return axios.get("/api/patient");
@@ -45,7 +49,8 @@ export default {
   },
   // Gets the appointment with the given id
   getAppointment: function(id) {
-    return axios.get("/api/appointment" + id);
+    // console.log("route: /api/appointment/" + id)
+    return axios.get("/api/appointment/" + id);
   },
   // Deletes the appointment with the given id
   deleteAppointment: function(id) {
@@ -53,6 +58,7 @@ export default {
   },
   // Saves an appointment to the database
   saveAppointment: function(appointmentData) {
+    console.log("route: /api/appointment/")
     return axios.post("/api/appointment", appointmentData);
   },
 

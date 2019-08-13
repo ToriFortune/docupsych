@@ -5,6 +5,7 @@ import moment from "moment";
 import NewProviderForm from "../component/NewProviderForm";
 import { toast } from 'react-toastify';
 import Forms from "../utils/forms"
+import {Redirect} from "react-router-dom";
 
 class Provider extends Component {
   state = {
@@ -78,6 +79,9 @@ class Provider extends Component {
   };
 
   render() {
+    if (sessionStorage.getItem("isLoggedIn") !== "true"){
+      return <Redirect to="/"/>;
+    }
     return (
       <Accordion defaultActiveKey="0">
         <Card>
