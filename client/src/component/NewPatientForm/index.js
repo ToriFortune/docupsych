@@ -3,6 +3,7 @@ import { Form, Col } from "react-bootstrap";
 import { Input, FormBtn, Select } from "../FormInput";
 import "./style.css"
 import stateList from "../../utils/states"
+import gender from "../../utils/gender"
 
 function NewPatientForm(props) {
   // Notice how each input has a `value`, `name`, and `onChange` prop
@@ -62,7 +63,23 @@ function NewPatientForm(props) {
             placeholder="123-456-7890"
             onChange={props.inputChange} />
         </Form.Group>
-        <Form.Group as={Col} controlId="formGridSex">
+       
+        <Form.Group as={Col} controlId="formGridGender">
+          <Form.Label>Gender</Form.Label>
+          <Select
+            name="gender"
+            value={props.form.state}
+            onChange={props.inputChange}>
+            <option>Choose...</option>
+            {gender.map((state => {
+              return <option>{state}</option>
+            }))}
+            <option></option>
+          </Select>
+        </Form.Group>
+       
+       
+        {/* <Form.Group as={Col} controlId="formGridSex">
           <Form.Label>Gender</Form.Label>
           <Input
             name="sex"
@@ -70,7 +87,7 @@ function NewPatientForm(props) {
             type="text"
             placeholder="Gender"
             onChange={props.inputChange} />
-        </Form.Group>
+        </Form.Group> */}
       </Form.Row>
       <Form.Row>
         <Form.Group as={Col} controlId="formGridAddress1">
