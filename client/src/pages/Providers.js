@@ -71,7 +71,7 @@ class Provider extends Component {
         .then(res => {
           this.loadProvider();
           this.clearForm();
-          toast.success("patient successfully added to list")
+          toast.success("provider successfully added to list")
         })
         .catch(err => console.log(err));
 
