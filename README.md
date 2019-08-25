@@ -40,6 +40,10 @@ Redux
 MongoDB
 Toastify
 React Calendar
+Castify
 
 
-![layout](https://user-images.githubusercontent.com/46722789/60772813-3633af80-a0c1-11e9-9c6f-b41ec1e6bf11.jpg)
+![image](https://user-images.githubusercontent.com/46722789/63644934-b76af400-c6b9-11e9-8ba8-c82291285a24.png)
+![image](https://user-images.githubusercontent.com/46722789/63644946-f00acd80-c6b9-11e9-8371-0e670c7e6ce8.png)
+![image](https://user-images.githubusercontent.com/46722789/63644951-129ce680-c6ba-11e9-829b-62388c33a14f.png)
+![image](https://user-images.githubusercontent.com/46722789/63645013-2137cd80-c6bb-11e9-8a45-bc753b928b62.gif)
