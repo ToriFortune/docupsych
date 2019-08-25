@@ -47,4 +47,5 @@ Castify
 ![image](https://user-images.githubusercontent.com/46722789/63644946-f00acd80-c6b9-11e9-8371-0e670c7e6ce8.png)
 ![image](https://user-images.githubusercontent.com/46722789/63644951-129ce680-c6ba-11e9-829b-62388c33a14f.png)
 https://github.com/ToriFortune/Project-3/blob/b49ec97a465c8d19c9d46c2710e0eb3f4e11f3c2/videos/welcome.gif
-
+https://github.com/ToriFortune/Project-3/blob/0044a6e4a4a403d92d7aedf1bfb5f7f634eea777/videos/addprovider.gif
+https://github.com/ToriFortune/Project-3/blob/0044a6e4a4a403d92d7aedf1bfb5f7f634eea777/videos/addappointment.gif
